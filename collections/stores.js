@@ -1,4 +1,4 @@
-db.createCollection("store", {
+db.createCollection("stores", {
     validator: {
         $jsonSchema: {
             bsonType: "object",
@@ -74,3 +74,81 @@ db.createCollection("store", {
     },
 },
 );
+
+const store1 ={
+    name:"tienda1",
+    adress:{
+        street:"calle2",
+        number:199,
+        floor:"10",
+        city:"barcelona",
+        pc:080002
+    },
+    Employees:[{
+        name:"empleado1",
+        surname:"apempleado2",
+        NIF:"444444444a",
+        phone: 99999999,
+        job_description:"delivery"
+    },
+    {
+        name:"empleado2",
+        surname:"apempleado3",
+        NIF:"455555a",
+        phone: 96666699,
+        job_description:"chef"
+    },
+]
+}
+
+const store2 ={
+    name:"tienda2",
+    adress:{
+        street:"calle3",
+        number:99,
+        floor:"10",
+        city:"madrid",
+        pc:080002
+    },
+    Employees:[{
+        name:"empleado3",
+        surname:"apempleado3",
+        NIF:"444444444a",
+        phone: 99999999,
+        job_description:"delivery"
+    },
+    {
+        name:"empleado10",
+        surname:"apempleado10",
+        NIF:"455555a",
+        phone: 96666699,
+        job_description:"chef"
+    },
+]
+}
+
+const store3 ={
+    name:"tienda3",
+    adress:{
+        street:"calle4",
+        number:933,
+        floor:"10",
+        city:"sevilla",
+        pc:080002
+    },
+    Employees:[{
+        name:"empleado99",
+        surname:"apempleado99",
+        NIF:"444444444a",
+        phone: 99999999,
+        job_description:"delivery"
+    },
+    {
+        name:"empleado88",
+        surname:"apempleado88",
+        NIF:"455555a",
+        phone: 96666699,
+        job_description:"chef"
+    },
+]
+}

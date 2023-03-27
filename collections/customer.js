@@ -1,4 +1,4 @@
-db.createCollection("customer", {
+db.createCollection("customers", {
     validator: {
         $jsonSchema: {
             bsonType: "object",
@@ -51,3 +51,43 @@ db.createCollection("customer", {
         },
     },
 });
+
+
+const cust1 = {
+    name:"cliente1",
+    surname:"Apcliente1",
+    adress:{
+        street:"calle1",
+        number:100,
+        floor:"10",
+        city:"barcelona",
+        pc:080001
+    },
+    phone:999999999
+}
+
+const cust2 = {
+    name:"cliente2",
+    surname:"Apcliente2",
+    adress:{
+        street:"calle2",
+        number:200,
+        floor:"10",
+        city:"barcelona",
+        pc:080001
+    },
+    phone:96666666
+}
+
+const cust3 = {
+    name:"cliente3",
+    surname:"Apcliente3",
+    adress:{
+        street:"calle3",
+        number:300,
+        floor:"10",
+        city:"barcelona",
+        pc:080001
+    },
+    phone:333333333
+}
