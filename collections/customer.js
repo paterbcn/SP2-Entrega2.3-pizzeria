@@ -1,3 +1,6 @@
+use('pizzeria');
+db.customers.drop();
+
 db.createCollection("customers", {
     validator: {
         $jsonSchema: {
@@ -91,3 +94,5 @@ const cust3 = {
     },
     phone:333333333
 }
+
+db.customers.insertMany([cust1,cust2,cust3])

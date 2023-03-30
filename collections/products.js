@@ -1,3 +1,7 @@
+use('pizzeria');
+db.products.drop();
+
+
 db.createCollection("products", {
     validator: {
         $jsonSchema: {
@@ -47,3 +51,5 @@ const product3 = {
     category:"bebidas",
     subcategory:"refresco"
 }
+
+db.products.insertMany([product1,product2,product3])

@@ -1,9 +1,13 @@
+use('pizzeria');
+db.sales.drop();
+
+
 db.createCollection("sales", {
   validator: {
     $jsonSchema: {
       bsonType: "object",
       title: "sales Object Validation",
-      required: ["date", "id_customer", "id_tienda", "pickup", "sale_detail","total_sale","string"],
+      required: ["date", "id_customer", "id_store", "pickup", "sale_detail","employee"],
       properties: {
         date: {
           bsonType: "date",
@@ -15,14 +19,14 @@ db.createCollection("sales", {
         },
         id_store: {
           bsonType: "objectId",
-          description: "'id_tienda' must be a objectId and is required",
+          description: "'id_store' must be a objectId and is required",
         },
         pickup: {
           bsonType: "string",
           enum: ["delivery", "store"],
           description: "'pickup' must be 'delivery' or 'store' and is required",
         },employee: {
-          bsonType: "objectid",
+          bsonType: "objectId",
           description: "'employee' must be a objectid and is required",
         },
         total_sale: {
@@ -33,6 +37,7 @@ db.createCollection("sales", {
           bsonType: "array",
           items: {
             bsonType: "object",
+            required: ["id_product","quantity"],
             properties: {
               id_product: {
                 bsonType: "objectId",
@@ -47,9 +52,11 @@ db.createCollection("sales", {
         },
         delivery_detail: {
           bsonType: "object",
+          required: ["adress","phone","deliv_worker","deliv_date"],
           properties: {
             adress: {
               bsonType: "object",
+              required: ["street","number","pc","city"],
               properties: {
                 street: {
                   bsonType: "string",
@@ -61,11 +68,11 @@ db.createCollection("sales", {
                 },
                 floor: {
                   bsonType: "string",
-                  description: "'floor' must be a string and is required",
+                  description: "'floor' must be a string",
                 },
                 door: {
                   bsonType: "string",
-                  description: "'door' must be a string and is required",
+                  description: "'door' must be a string ",
                 },
                 city: {
                   bsonType: "string",
@@ -82,8 +89,8 @@ db.createCollection("sales", {
               description: "'phone' must be a number and is required",
             },
             deliv_worker: {
-              bsonType: "objectid",
-              description: "'deliv_worker' must be a objectid and is required",
+              bsonType: "objectId",
+              description: "'deliv_worker' must be a objectId and is required",
             },
             deliv_date: {
               bsonType: "date",
@@ -97,7 +104,7 @@ db.createCollection("sales", {
 });
 
 
-const sale = {
+const sale1 = {
   date: new Date(),
   id_customer: ObjectId("642153299216c6c22f0aa877"),
   id_store: ObjectId("64215d6560c0c02597ae3571"),
@@ -115,7 +122,7 @@ const sale = {
     },
   ],
   delivery_detail: {
-    aadress:{
+    adress:{
       street: "primera1",
       number: 23,
       floor: "a",
@@ -165,7 +172,7 @@ const sale3 = {
   
   ],
   delivery_detail: {
-    aadress:{
+    adress:{
       street: "segunda",
       number: 11,
       floor: "a",
@@ -179,3 +186,5 @@ const sale3 = {
   deliv_date: new Date(),
   },
 };
+
+db.sales.insertMany([sale1,sale2,sale3])

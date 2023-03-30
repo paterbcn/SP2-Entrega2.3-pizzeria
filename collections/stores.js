@@ -1,3 +1,7 @@
+use('pizzeria');
+db.stores.drop();
+
+
 db.createCollection("stores", {
     validator: {
         $jsonSchema: {
@@ -152,3 +156,5 @@ const store3 ={
     },
 ]
 }
+
+db.stores.insertMany([store1,store2,store3])
